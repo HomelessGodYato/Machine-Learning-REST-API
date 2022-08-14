@@ -79,7 +79,7 @@ DATABASES = {
         'NAME': os.environ.get('DB_NAME', 'ml_api'),
         'USER': os.environ.get('DB_USER', 'postgres'),
         'PASSWORD': os.environ.get('DB_PASS', 'postgres'),
-        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'HOST': os.environ.get('DB_HOST', 'db'),
         'PORT': os.environ.get('DB_PORT', 5432),
     }
 }
@@ -123,3 +123,4 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MODELS = os.path.join(BASE_DIR, 'ml/Model')
+ENCODERS = os.path.join(BASE_DIR, 'ml/Encoders')
