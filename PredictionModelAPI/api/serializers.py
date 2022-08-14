@@ -7,3 +7,10 @@ class RequestedFeaturesSerializer(serializers.ModelSerializer):
         model = RequestedFeatures
 
         fields = "__all__"
+
+
+class PredictedPriceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PredictedPrice
+
+        fields = "__all__"
