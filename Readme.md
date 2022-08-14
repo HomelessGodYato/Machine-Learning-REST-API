@@ -13,27 +13,27 @@ Test .json file is inside ```PredictionsModelAPI/ml/Data/``` directory.
     ```sh
    git clone https://github.com/HomelessGodYato/Machine-Learning-REST-API.git
    ```
-2. Compose docker containers
+2. Install requirements
+    ```sh
+    pip install --upgrade -r requirements.txt
+    ```
+3. Compose docker containers
     1. Compose database container:
     ```sh
     docker-compose up db
     ```
     2. Open second terminal and make migrations:
    ```sh
-   docker-compose run web python manage.py makemigrations
-   ```
-    3. Apply all migrations:
-   ```sh
    docker-compose run web python manage.py migrate --run-syncdb
    ```
-    4. Run web server:
+    3. Run web server:
    ```sh
    docker-compose up web
    ```
-3. Now API is set up.
-4. You can test API via ```api_testing.py``` script.
+4. Now API is set up.
+5. You can test API via ```api_testing.py``` script.
    1. Just run it from IDE or terminal
    2. You can find all responses inside ```Output Files``` directory.
-5. Or use Postman.
+6. Or use Postman.
 
    
