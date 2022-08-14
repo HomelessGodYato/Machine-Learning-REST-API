@@ -89,3 +89,10 @@ class PredictFromFile(APIView):
                 returnObject = FileSerializer(instance=fileObject)
             return Response(data=returnObject.data, status=status.HTTP_200_OK)
         return Response(data=serializer.data, status=status.HTTP_400_BAD_REQUEST)
+
+
+class GetAllFiles(APIView):
+    def get(self, request):
+        files = JSONFile.objects.all()
+        serializer = FileSerializer(files, many=True)
+        return JsonResponse(data=serializer.data, safe=False, status=status.HTTP_200_OK)
