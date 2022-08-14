@@ -9,7 +9,9 @@ urls = {
     "all_predictions": "http://127.0.0.1:8000/api/rf_cls/predictions/",
     "one_prediction": "http://127.0.0.1:8000/api/rf_cls/prediction/1/"
 }
-
+file_storage_directory = "Output_Files"
+path = os.path.join("./",file_storage_directory)
+os.makedirs(path,exist_ok=True)
 base_path = "./PredictionModelAPI/ml/Data/"
 
 file_name = "test.json"
