@@ -1,6 +1,6 @@
 [
   {
-    "carat": 0.23,
+    "carat": 5,
     "cut": 1,
     "color": 1,
     "clarity": 1,
@@ -15,20 +15,20 @@
     "cut": 2,
     "color": 1,
     "clarity": 1,
-    "depth": 61.5,
+    "depth": 85.4,
     "table": 55.0,
     "x": 3.95,
     "y": 3.98,
-    "z": 2.43
+    "z": 9.28
   },
   {
-    "carat": 0.23,
+    "carat": 1.2,
     "cut": 3,
     "color": 1,
     "clarity": 1,
     "depth": 61.5,
     "table": 55.0,
-    "x": 3.95,
+    "x": 32.4,
     "y": 3.98,
     "z": 2.43
   }
