@@ -32,18 +32,18 @@ response_all_predictions_json = json.loads(response_all_predictions.text)
 response_one_prediction = requests.get(urls['one_prediction'])
 response_one_prediction_json = json.loads(response_one_prediction.text)
 
-with open("./Output Files/output_file_upload.json", "w") as output_json_file_upload:
+with open("Output_Files/output_file_upload.json", "w") as output_json_file_upload:
     json.dump(response_file_upload_json, output_json_file_upload, indent=4)
     output_json_file_upload.close()
 
-with open("./Output Files/output_file_all_features.json", "w") as output_json_all_features:
+with open("Output_Files/output_file_all_features.json", "w") as output_json_all_features:
     json.dump(response_all_features_json, output_json_all_features, indent=4)
     output_json_all_features.close()
 
-with open("./Output Files/output_file_all_predictions.json", "w") as output_json_all_predictions:
+with open("Output_Files/output_file_all_predictions.json", "w") as output_json_all_predictions:
     json.dump(response_all_predictions_json, output_json_all_predictions, indent=4)
     output_json_all_predictions.close()
 
-with open("./Output Files/output_file_one_prediction.json", "w") as output_json_one_prediction:
+with open("Output_Files/output_file_one_prediction.json", "w") as output_json_one_prediction:
     json.dump(response_one_prediction_json, output_json_one_prediction, indent=4)
     output_json_one_prediction.close()
