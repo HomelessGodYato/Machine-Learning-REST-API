@@ -36,4 +36,8 @@ Test .json file is inside ```PredictionsModelAPI/ml/Data/``` directory.
    2. You can find all responses inside ```Output Files``` directory.
 6. Or use Postman.
 
-   
+## TODO
+1. Train and deploy new models.
+2. Make possible uploading/training models via API
+3. Make possible to do basic data analysis for uploaded file.
+4. Make possible to use uploaded .csv file in training chosen model.
