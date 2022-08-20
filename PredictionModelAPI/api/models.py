@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 # Create your models here.
@@ -23,5 +24,3 @@ class RequestedFeatures(models.Model):
 class PredictedPrice(models.Model):
     features_id = models.ForeignKey(RequestedFeatures, related_name="prediction", on_delete=models.CASCADE)
     predicted_price = models.FloatField(blank=False, null=False)
-
-
