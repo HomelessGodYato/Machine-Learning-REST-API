@@ -1,11 +1,10 @@
 import json
-
 import numpy as np
+import os
 from .apps import ApiConfig
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from django.views.decorators.csrf import csrf_exempt
 from .models import RequestedFeatures, PredictedPrice, JSONFile
 from .serializers import RequestedFeaturesSerializer, PredictedPriceSerializer, FileSerializer
 from django.http import JsonResponse
