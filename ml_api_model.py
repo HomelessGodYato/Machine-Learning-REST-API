@@ -4,23 +4,23 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 
-data = pd.read_csv('diamond_prices_encoded.csv')
+data = pd.read_csv('diamond_prices.csv')
 
-cut_encoder = LabelEncoder()
-cut_encoder.fit(data['cut'])
-data['cut'] = cut_encoder.transform(data['cut'])
+copied_data = data.copy()
+
+cut_enc = LabelEncoder()
+data['cut'] = cut_enc.fit_transform(data['cut'])
+
 
 color_enc = LabelEncoder()
-color_enc.fit(data['color'])
-data['color'] = color_enc.transform(data['color'])
+data['color'] = color_enc.fit_transform(data['color'])
 
 clarity_enc = LabelEncoder()
-clarity_enc.fit(data['clarity'])
-data['clarity'] = clarity_enc.transform(data['clarity'])
-data.to_csv('diamond_prices_encoded.csv')
+data['clarity'] = clarity_enc.fit_transform(data['clarity'])
 
 y = data['price']
 X = data.drop(['price'], axis=1)
+
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 model = RandomForestRegressor()

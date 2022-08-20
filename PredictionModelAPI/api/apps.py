@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 import os
-import pickle, bz2,joblib
+import joblib
 from django.conf import settings
 
 
