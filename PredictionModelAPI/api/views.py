@@ -9,9 +9,11 @@ from .models import RequestedFeatures, PredictedPrice, JSONFile
 from .serializers import RequestedFeaturesSerializer, PredictedPriceSerializer, FileSerializer
 from django.http import JsonResponse
 from .utils import read_json
+from django.views.decorators.csrf import csrf_exempt
 
 
 class GetAllRequestedFeatures(APIView):
+    @csrf_exempt
     def get(self, request):
         features = RequestedFeatures.objects.all()
         serializer = RequestedFeaturesSerializer(features, many=True)
@@ -19,6 +21,7 @@ class GetAllRequestedFeatures(APIView):
 
 
 class GetAllPredictions(APIView):
+    @csrf_exempt
     def get(self, request):
         predictions = PredictedPrice.objects.all()
         serializer = PredictedPriceSerializer(predictions, many=True)
@@ -26,6 +29,7 @@ class GetAllPredictions(APIView):
 
 
 class GetOnePrediction(APIView):
+    @csrf_exempt
     def get(self, request, pk):
         try:
             prediction = PredictedPrice.objects.get(pk=pk)
@@ -37,6 +41,7 @@ class GetOnePrediction(APIView):
 
 
 class PredictFromFile(APIView):
+    @csrf_exempt
     def post(self, request):
         serializer = FileSerializer(data=request.FILES)
         if serializer.is_valid():
@@ -67,13 +72,12 @@ class PredictFromFile(APIView):
                 price_predicted = model.predict(input_data)
                 price_predicted = np.round(price_predicted, 1)
                 predictions.append({"Predicted price": price_predicted})
-
                 features_object = RequestedFeatures.objects.create(
                     file_id=fileObject,
                     carat=input_data[0][0],
-                    cut=ApiConfig.cut_enc.inverse_transform([input_data[0][1].astype(int)]),
-                    color=ApiConfig.color_enc.inverse_transform([input_data[0][2].astype(int)]),
-                    clarity=ApiConfig.clarity_enc.inverse_transform([input_data[0][3].astype(int)]),
+                    cut=ApiConfig.cut_enc.inverse_transform([input_data[0][1].astype(int)])[0],
+                    color=ApiConfig.color_enc.inverse_transform([input_data[0][2].astype(int)])[0],
+                    clarity=ApiConfig.clarity_enc.inverse_transform([input_data[0][3].astype(int)])[0],
                     depth=input_data[0][4],
                     table=input_data[0][5],
                     x=input_data[0][6],
@@ -91,6 +95,7 @@ class PredictFromFile(APIView):
 
 
 class GetAllFiles(APIView):
+    @csrf_exempt
     def get(self, request):
         files = JSONFile.objects.all()
         serializer = FileSerializer(files, many=True)
