@@ -40,7 +40,81 @@ Test .json file is inside ```PredictionsModelAPI/ml/Data/``` directory.
 2. ```api/rf_cls/predictions/``` - gives you list of all predictions that ML model made for your requests.
 3. ```api/rf_cls/prediction/<int:pk>/``` - gives you prediction based on id that you provide in endpoint
 4. ```api/rf_cls/json/upload/``` - gives you oportunity to upload json file with features for prediction
-5. ```api/rf_cls/files/get_all/``` - gives you list of all files you have uploded, features inside those files and predictions made for features. 
+5. ```api/rf_cls/files/get_all/``` - gives you list of all files you have uploded, features inside those files and predictions made for features.
+
+## Example API response
+```json
+{
+    "id": 2,
+    "file": "/test_iaEEf26.json",
+    "created": "2022-08-22T09:28:15.819397Z",
+    "ml_model": [
+        {
+            "model_name": "Random Forest Regressor",
+            "model_score": 98.0
+        }
+    ],
+    "features": [
+        {
+            "id": 1,
+            "carat": 5.0,
+            "cut": "Good",
+            "color": "E",
+            "clarity": "IF",
+            "depth": 61.5,
+            "table": 55.0,
+            "x": 3.95,
+            "y": 3.98,
+            "z": 2.43,
+            "prediction": [
+                {
+                    "id": 1,
+                    "predicted_price": 12288.8,
+                    "features_id": 1
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "carat": 0.23,
+            "cut": "Ideal",
+            "color": "E",
+            "clarity": "IF",
+            "depth": 85.4,
+            "table": 55.0,
+            "x": 3.95,
+            "y": 3.98,
+            "z": 9.28,
+            "prediction": [
+                {
+                    "id": 2,
+                    "predicted_price": 570.9,
+                    "features_id": 2
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "carat": 1.2,
+            "cut": "Premium",
+            "color": "E",
+            "clarity": "IF",
+            "depth": 61.5,
+            "table": 55.0,
+            "x": 32.4,
+            "y": 3.98,
+            "z": 2.43,
+            "prediction": [
+                {
+                    "id": 3,
+                    "predicted_price": 11906.2,
+                    "features_id": 3
+                }
+            ]
+        }
+    ]
+}
+```
 ## TODO
 1. Train and deploy new models.
 2. Make possible uploading/training models via API
