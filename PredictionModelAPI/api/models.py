@@ -3,6 +3,7 @@ from django.conf import settings
 
 
 # Create your models here.
+
 class JSONFile(models.Model):
     file = models.FileField(blank=False, null=False)
     created = models.DateTimeField(auto_now_add=True)
@@ -24,3 +25,9 @@ class RequestedFeatures(models.Model):
 class PredictedPrice(models.Model):
     features_id = models.ForeignKey(RequestedFeatures, related_name="prediction", on_delete=models.CASCADE)
     predicted_price = models.FloatField(blank=False, null=False)
+
+
+class MLModel(models.Model):
+    file_id = models.ForeignKey(JSONFile, related_name="ml_model", on_delete=models.CASCADE)
+    model_name = models.CharField(default='', max_length=250, blank=False, null=False)
+    model_score = models.FloatField(default=0, blank=False, null=False)
