@@ -123,5 +123,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MODELS = os.path.join(BASE_DIR, 'ml/Model')
+SCORES = os.path.join(BASE_DIR, 'ml/Scores')
 ENCODERS = os.path.join(BASE_DIR, 'ml/Encoders')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploaded_files')
