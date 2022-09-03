@@ -42,7 +42,9 @@ Test .json file is inside ```PredictionsModelAPI/ml/Data/``` directory.
 4. ```api/rf_cls/json/upload/``` - gives you oportunity to upload json file with features for prediction
 5. ```api/rf_cls/files/get_all/``` - gives you list of all files you have uploded, features inside those files and predictions made for features.
 
-## Example API response
+## Example API response from each endpoint
+
+1. ```api/rf_cls/json/upload/```  
 ```json
 {
     "id": 2,
@@ -115,8 +117,173 @@ Test .json file is inside ```PredictionsModelAPI/ml/Data/``` directory.
     ]
 }
 ```
-## TODO
-1. Train and deploy new models.
-2. Make possible uploading/training models via API
-3. Make possible to do basic data analysis for uploaded file.
-4. Make possible to use uploaded .csv file in training chosen model.
+2. ```api/rf_cls/features/```  
+```json
+[
+    {
+        "id": 1,
+        "carat": 5.0,
+        "cut": "Good",
+        "color": "E",
+        "clarity": "IF",
+        "depth": 61.5,
+        "table": 55.0,
+        "x": 3.95,
+        "y": 3.98,
+        "z": 2.43,
+        "prediction": [
+            {
+                "id": 1,
+                "predicted_price": 13279.03,
+                "features_id": 1
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "carat": 0.23,
+        "cut": "Ideal",
+        "color": "E",
+        "clarity": "IF",
+        "depth": 85.4,
+        "table": 55.0,
+        "x": 3.95,
+        "y": 3.98,
+        "z": 9.28,
+        "prediction": [
+            {
+                "id": 2,
+                "predicted_price": 582.45,
+                "features_id": 2
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "carat": 1.2,
+        "cut": "Premium",
+        "color": "E",
+        "clarity": "IF",
+        "depth": 61.5,
+        "table": 55.0,
+        "x": 32.4,
+        "y": 3.98,
+        "z": 2.43,
+        "prediction": [
+            {
+                "id": 3,
+                "predicted_price": 13401.338,
+                "features_id": 3
+            }
+        ]
+    }
+]
+```
+3. ```api/rf_cls/predictions/```
+```json
+[
+    {
+        "id": 1,
+        "predicted_price": 13279.03,
+        "features_id": 1
+    },
+    {
+        "id": 2,
+        "predicted_price": 582.45,
+        "features_id": 2
+    },
+    {
+        "id": 3,
+        "predicted_price": 13401.338,
+        "features_id": 3
+    }
+]
+```
+4. ```api/rf_cls/prediction/1/```
+```json
+{
+    "id": 1,
+    "predicted_price": 13279.03,
+    "features_id": 1
+}
+```
+
+5. ```api/rf_cls/files/get_all/```
+```json
+[
+    {
+        "id": 1,
+        "file": "/test_UOIOQxU.json",
+        "created": "2022-09-03T16:50:57.173143Z",
+        "ml_model": [
+            {
+                "model_name": "RandomForestRegressor",
+                "model_score": 0.98
+            }
+        ],
+        "features": [
+            {
+                "id": 1,
+                "carat": 5.0,
+                "cut": "Good",
+                "color": "E",
+                "clarity": "IF",
+                "depth": 61.5,
+                "table": 55.0,
+                "x": 3.95,
+                "y": 3.98,
+                "z": 2.43,
+                "prediction": [
+                    {
+                        "id": 1,
+                        "predicted_price": 13279.03,
+                        "features_id": 1
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "carat": 0.23,
+                "cut": "Ideal",
+                "color": "E",
+                "clarity": "IF",
+                "depth": 85.4,
+                "table": 55.0,
+                "x": 3.95,
+                "y": 3.98,
+                "z": 9.28,
+                "prediction": [
+                    {
+                        "id": 2,
+                        "predicted_price": 582.45,
+                        "features_id": 2
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "carat": 1.2,
+                "cut": "Premium",
+                "color": "E",
+                "clarity": "IF",
+                "depth": 61.5,
+                "table": 55.0,
+                "x": 32.4,
+                "y": 3.98,
+                "z": 2.43,
+                "prediction": [
+                    {
+                        "id": 3,
+                        "predicted_price": 13401.338,
+                        "features_id": 3
+                    }
+                ]
+            }
+        ]
+    }
+]
+```
+
+## Postman collection
+You can use Postman collection to test API endpoints.  
+You will need to install a Postman desktop version to use this tool with your local server. After installation register or log in. Then create new workspace and click on collections button. In your workspace click import button and choose option link then use this link: https://www.getpostman.com/collections/6a123bb8699fda9a1752 Now you are able to test api in a very comfortable way.
