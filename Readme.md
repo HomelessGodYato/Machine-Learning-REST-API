@@ -117,6 +117,7 @@ Test .json file is inside ```PredictionsModelAPI/ml/Data/``` directory.
     ]
 }
 ```
+
 2. ```api/rf_cls/features/```  
 ```json
 [
@@ -288,3 +289,4 @@ Test .json file is inside ```PredictionsModelAPI/ml/Data/``` directory.
 
 You can use Postman collection to test API endpoints.  
 You will need to install a Postman desktop version to use this tool with your local server. After installation register or log in. Then create new workspace and click on collections button. In your workspace click import button and choose option link then use this link: https://www.getpostman.com/collections/6a123bb8699fda9a1752 Now you are able to test api in a very comfortable way.
+=======
