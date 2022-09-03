@@ -16,10 +16,13 @@ def save_objects(serializer):
 
     data = read_json(file_object.file)
     predictions = []
-    model = ApiConfig.model
+    model = ApiConfig.rf_model
+    model_score = ApiConfig.rf_score
+
     MLModel.objects.create(file_id=file_object,
-                           model_name="Random Forest Regressor",
-                           model_score=98.0)
+                           model_name=type(model).__name__,
+                           model_score=model_score.round(2))
+
     for i in range(len(data)):
         data_from_json = {k: v for k, v in data[i].items()}
 
@@ -34,10 +37,8 @@ def save_objects(serializer):
                       data_from_json['z']]
 
         input_data = np.array(input_data).reshape(1, -1)
-        print(input_data)
-        price_predicted = model.predict(input_data)
-        price_predicted = np.round(price_predicted, 1)
-        predictions.append({"Predicted price": price_predicted})
+        price_predicted = np.round(model.predict(input_data),3)
+        
         features_object = RequestedFeatures.objects.create(
             file_id=file_object,
             carat=input_data[0][0],
