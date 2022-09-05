@@ -2,7 +2,7 @@
 
 ## Description
 
-API uses pretrained model (Random forest regressor) from scikit-learn package,
+API uses pretrained models (Random forest regressor, K-Nearest Neighbors) from scikit-learn package,
 for diamond price prediction. Model was trained diamond_prices dataset
 from [Kaggle](https://www.kaggle.com/datasets/nancyalaswad90/diamonds-prices).  
 Test .json file is inside ```PredictionsModelAPI/ml/Data/``` directory.
