@@ -36,15 +36,16 @@ Test .json file is inside ```PredictionsModelAPI/ml/Data/``` directory.
    2. You can find all responses inside ```Output Files``` directory.
 6. Or use Postman.
 ## API endpoints
-1. ```api/rf_cls/features/``` - gives you list of all features you have sent to ML model.
-2. ```api/rf_cls/predictions/``` - gives you list of all predictions that ML model made for your requests.
-3. ```api/rf_cls/prediction/<int:pk>/``` - gives you prediction based on id that you provide in endpoint
-4. ```api/rf_cls/json/upload/``` - gives you oportunity to upload json file with features for prediction
-5. ```api/rf_cls/files/get_all/``` - gives you list of all files you have uploded, features inside those files and predictions made for features.
+1. ```api/features/``` - gives you list of all features you have sent to ML model.
+2. ```api/predictions/``` - gives you list of all predictions that ML model made for your requests.
+3. ```api/prediction/<int:pk>/``` - gives you prediction based on id that you provide in endpoint
+4. ```api/rf_regressor/json/upload/``` - gives you oportunity to upload json file with features for prediction by Random Forest Regressor
+5. ```api/knn_regressor/json/upload/``` - same as above, but model is K-Nearest Neighbors.
+6. ```api/files/get_all/``` - gives you list of all files you have uploded, features inside those files and predictions made for features.
 
 ## Example API response from each endpoint
 
-1. ```api/rf_cls/json/upload/```  
+1. ```api/rf_regressor/json/upload/```  
 ```json
 {
     "id": 2,
@@ -118,7 +119,7 @@ Test .json file is inside ```PredictionsModelAPI/ml/Data/``` directory.
 }
 ```
 
-2. ```api/rf_cls/features/```  
+2. ```api/features/```  
 ```json
 [
     {
@@ -180,7 +181,7 @@ Test .json file is inside ```PredictionsModelAPI/ml/Data/``` directory.
     }
 ]
 ```
-3. ```api/rf_cls/predictions/```
+3. ```api/predictions/```
 ```json
 [
     {
@@ -200,7 +201,7 @@ Test .json file is inside ```PredictionsModelAPI/ml/Data/``` directory.
     }
 ]
 ```
-4. ```api/rf_cls/prediction/1/```
+4. ```api/prediction/1/```
 ```json
 {
     "id": 1,
@@ -209,7 +210,7 @@ Test .json file is inside ```PredictionsModelAPI/ml/Data/``` directory.
 }
 ```
 
-5. ```api/rf_cls/files/get_all/```
+5. ```api/files/get_all/```
 ```json
 [
     {
