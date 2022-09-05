@@ -17,6 +17,17 @@ class ApiConfig(AppConfig):
 
     rf_model = joblib.load(RF_MODEL_FILE)
 
+    models = {
+                "RandomForestRegressor":joblib.load(os.path.join(settings.MODELS, "random_forest_regressor.pkl"))
+             }
+
+    scores = {
+                "RandomForestScore":joblib.load(os.path.join(settings.SCORES, "rfc_score.pkl"))
+             }
+    
+    encoders = {
+                    "ColorEncoder": joblib.load(os.path.join(settings.ENCODERS, "color_encoder.pkl")),
+               }
     rf_score = joblib.load(RF_SCORE_FILE)
 
     color_enc = joblib.load(COLOR_ENCODER_FILE)

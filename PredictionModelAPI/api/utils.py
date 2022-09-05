@@ -10,12 +10,11 @@ def read_json(file):
     return data
 
 
-def save_objects(serializer):
+def save_objects(serializer,model):
     fileId = serializer.data.get('id')
     file_object = JSONFile.objects.get(id=fileId)
 
     data = read_json(file_object.file)
-    predictions = []
     model = ApiConfig.rf_model
     model_score = ApiConfig.rf_score
 
