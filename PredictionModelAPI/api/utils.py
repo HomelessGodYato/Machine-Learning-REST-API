@@ -10,13 +10,14 @@ def read_json(file):
     return data
 
 
-def save_objects(serializer,model):
+def save_objects(serializer,ml_model):
     fileId = serializer.data.get('id')
     file_object = JSONFile.objects.get(id=fileId)
 
     data = read_json(file_object.file)
-    model = ApiConfig.rf_model
-    model_score = ApiConfig.rf_score
+    model = ml_model
+    print(type(model).__name__)
+    model_score = ApiConfig.scores[type(model).__name__]
 
     MLModel.objects.create(file_id=file_object,
                            model_name=type(model).__name__,
@@ -41,9 +42,9 @@ def save_objects(serializer,model):
         features_object = RequestedFeatures.objects.create(
             file_id=file_object,
             carat=input_data[0][0],
-            cut=ApiConfig.cut_enc.inverse_transform([input_data[0][1].astype(int)])[0],
-            color=ApiConfig.color_enc.inverse_transform([input_data[0][2].astype(int)])[0],
-            clarity=ApiConfig.clarity_enc.inverse_transform([input_data[0][3].astype(int)])[0],
+            cut=ApiConfig.encoders["CutEncoder"].inverse_transform([input_data[0][1].astype(int)])[0],
+            color=ApiConfig.encoders["ColorEncoder"].inverse_transform([input_data[0][2].astype(int)])[0],
+            clarity=ApiConfig.encoders["ClarityEncoder"].inverse_transform([input_data[0][3].astype(int)])[0],
             depth=input_data[0][4],
             table=input_data[0][5],
             x=input_data[0][6],
