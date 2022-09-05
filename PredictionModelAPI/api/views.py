@@ -42,12 +42,12 @@ class GetOnePrediction(APIView):
 
 class PredictFromFile(APIView):
     @csrf_exempt
-    def post(self, request):
+    def post(self, request, **kwargs):
         serializer = FileSerializer(data=request.FILES)
         if serializer.is_valid():
             serializer.save()
-
-            returnObject = save_objects(serializer)
+            model = kwargs.get('model')
+            returnObject = save_objects(serializer,model)
 
             return Response(data=returnObject.data, status=status.HTTP_200_OK)
         return Response(data=serializer.data, status=status.HTTP_400_BAD_REQUEST)
