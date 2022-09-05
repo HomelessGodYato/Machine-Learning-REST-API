@@ -2,6 +2,13 @@ from rest_framework import serializers
 from .models import RequestedFeatures, PredictedPrice, JSONFile, MLModel
 
 
+class MLModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MLModel
+        fields = ["model_name",
+                  "model_score"]
+
+
 class PredictedPriceSerializer(serializers.ModelSerializer):
     class Meta:
         model = PredictedPrice
@@ -27,12 +34,6 @@ class RequestedFeaturesSerializer(serializers.ModelSerializer):
                   "z",
                   "prediction"]
 
-
-class MLModelSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = MLModel
-        fields = ["model_name",
-                  "model_score"]
 
 
 class FileSerializer(serializers.ModelSerializer):
