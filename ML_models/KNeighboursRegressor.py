@@ -2,7 +2,7 @@ import pandas as pd
 import joblib
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.neighbors import KNeighborsRegressor
 
 data = pd.read_csv('./Dataset/diamond_prices.csv')
 
@@ -23,13 +23,14 @@ X = data.drop(['price'], axis=1)
 
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-model = RandomForestRegressor()
+model = KNeighborsRegressor()
 model.fit(X_train.values, y_train.values)
 model_accuracy = model.score(X_test.values, y_test.values)
 
+# can be deleted
 joblib.dump(cut_enc, "../PredictionModelAPI/ml/Encoders/cut_encoder.pkl", compress=3)
 joblib.dump(color_enc, "../PredictionModelAPI/ml/Encoders/color_encoder.pkl", compress=3)
 joblib.dump(clarity_enc, "../PredictionModelAPI/ml/Encoders/clarity_encoder.pkl", compress=3)
-joblib.dump(model, "../PredictionModelAPI/ml/Model/random_forest_regressor.pkl", compress=3)
-joblib.dump(model_accuracy, "../PredictionModelAPI/ml/Scores/rfc_score.pkl", compress=3)
+joblib.dump(model, f"../PredictionModelAPI/ml/Model/{type(model).__name__}.pkl", compress=3)
+joblib.dump(model_accuracy, f"../PredictionModelAPI/ml/Scores/{type(model).__name__}_score.pkl", compress=3)
 
