@@ -20,16 +20,9 @@ Test .json file is inside ```PredictionsModelAPI/ml/Data/``` directory.
 3. Compose docker containers
     1. Compose database container:
     ```sh
-    docker-compose up db
+    docker-compose up
     ```
-    2. Open second terminal and make migrations:
-   ```sh
-   docker-compose run web python manage.py migrate --run-syncdb
-   ```
-    3. Run web server:
-   ```sh
-   docker-compose up web
-   ```
+    2. All migrations will apply automatically.
 4. Now API is set up.
 5. You can test API via ```api_testing.py``` script.
    1. Just run it from IDE or terminal
