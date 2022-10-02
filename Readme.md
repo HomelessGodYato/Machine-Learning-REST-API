@@ -17,17 +17,21 @@ Test .json file is inside ```PredictionsModelAPI/ml/Data/``` directory.
     ```sh
     pip install --upgrade -r requirements.txt
     ```
-3. Compose docker containers
+3. Install git LFS for downloading models:
+    ```sh
+    https://git-lfs.github.com/
+    ```
+4. Compose docker containers
     1. Compose database container:
     ```sh
     docker-compose up
     ```
     2. All migrations will apply automatically.
-4. Now API is set up.
-5. You can test API via ```api_testing.py``` script.
+5. Now API is set up.
+6. You can test API via ```api_testing.py``` script.
    1. Just run it from IDE or terminal
    2. You can find all responses inside ```Output Files``` directory.
-6. Or use Postman.
+7. Or use Postman.
 ## API endpoints
 1. ```api/features/``` - gives you list of all features you have sent to ML model.
 2. ```api/predictions/``` - gives you list of all predictions that ML model made for your requests.
